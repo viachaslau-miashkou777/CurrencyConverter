@@ -47,3 +47,30 @@
 #         result2 = converter(a_list[i], c2, c1, r, -d)
 #         print(result2)
 
+# Currency Converter. Option 4.
+
+from datetime import datetime
+current_date = datetime.now().date()
+currency_list = ['usd', 'yuan']
+rate = 6.81
+currency_to_buy = ''
+while currency_to_buy not in currency_list:
+    currency_to_buy = input(
+        f' we can suggest {currency_list[0]} or {currency_list[1]} to exchange, please, choose the currency: ')
+if currency_to_buy == currency_list[0]:
+    print(f'we sell {currency_list[0]} for {currency_list[1]}')
+else:
+    print(f'we sell {currency_list[1]} for {currency_list[0]}')
+while 1!=0:
+    amount = input('enter the amount you want to buy: ')
+    try:
+        float(amount)
+        break
+    except ValueError:
+        continue
+if currency_to_buy == currency_list[0]:
+    print(current_date, f'exchange rate is: {round(rate, 3)}, your amount to sell in {currency_list[1]} is: ',
+          round(float(amount)*rate, 2))
+else:
+    print(current_date, f'exchange rate is: {round(1/rate, 3)}, your amount to sell in {currency_list[0]} is: ',
+          round(float(amount)/rate, 2))
